@@ -121,14 +121,17 @@ export default function App() {
   }, [tw.accent, tw.density, tw.radius, tw.texture, theme]);
 
   const [type, setType] = useState('url');
-  const [forms, setForms] = useState({
-    url: { url: 'https://github.com/pws-wobbuffet/privqr' },
-    wifi: { ssid: '', password: '', encryption: 'WPA', hidden: false },
-    vcard: { firstName: '', lastName: '', org: '', title: '', email: '', phone: '', website: '' },
-    geo: { lat: '', lon: '' },
-    email: { email: '', subject: '', body: '' },
-    sms: { phone: '', message: '' },
-    tel: { phone: '' },
+  const [forms, setForms] = useState(() => {
+    const prefilledUrl = new URLSearchParams(window.location.search).get('url') ?? '';
+    return {
+      url: { url: prefilledUrl || 'https://github.com/pws-wobbuffet/privqr' },
+      wifi: { ssid: '', password: '', encryption: 'WPA', hidden: false },
+      vcard: { firstName: '', lastName: '', org: '', title: '', email: '', phone: '', website: '' },
+      geo: { lat: '', lon: '' },
+      email: { email: '', subject: '', body: '' },
+      sms: { phone: '', message: '' },
+      tel: { phone: '' },
+    };
   });
   const setFormData = (patch) =>
     setForms((prev) => ({ ...prev, [type]: { ...prev[type], ...patch } }));
