@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 360" width="1280" height="360" role="img" aria-label="privqr — QR codes that never leave your browser">
+
+  <rect width="1280" height="360" fill="#0a0d12"/>
+
+  <text x="700" y="215" text-anchor="end" font-family="'Archivo Black','Arial Black',Impact,sans-serif" font-weight="900" font-size="200" letter-spacing="-8" fill="#f3efe6">priv</text>
+
+  <!-- 3×3 QR finder block: dark-mode accent green, dark ink -->
+  <g transform="translate(720 53)">
+    <rect x="0"      y="0"      width="170"   height="170"  fill="#2fd47a"/>
+    <rect x="16"     y="16"     width="40.67" height="40.67" fill="#06120c"/>
+    <rect x="64.67"  y="16"     width="40.67" height="40.67" fill="#06120c"/>
+    <rect x="113.33" y="16"     width="40.67" height="40.67" fill="#06120c"/>
+    <rect x="16"     y="64.67"  width="40.67" height="40.67" fill="#06120c"/>
+    <rect x="113.33" y="64.67"  width="40.67" height="40.67" fill="#06120c"/>
+    <rect x="16"     y="113.33" width="40.67" height="40.67" fill="#06120c"/>
+    <rect x="64.67"  y="113.33" width="40.67" height="40.67" fill="#06120c"/>
+    <rect x="113.33" y="113.33" width="40.67" height="40.67" fill="#06120c"/>
+  </g>
+
+  <text x="910" y="215" font-family="'Archivo Black','Arial Black',Impact,sans-serif" font-weight="900" font-size="200" letter-spacing="-8" fill="#f3efe6">r</text>
+
+  <text x="640" y="320" text-anchor="middle" font-family="ui-monospace,'JetBrains Mono',Menlo,Consolas,monospace" font-size="18" font-weight="500" letter-spacing="6" fill="#a8a39a">QR  CODES  THAT  NEVER  LEAVE  YOUR  BROWSER</text>
+</svg>
