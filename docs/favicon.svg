@@ -1,13 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#0b0d12"/>
-  <g fill="#7af0c2">
-    <rect x="5" y="5" width="6" height="6" rx="1"/>
-    <rect x="21" y="5" width="6" height="6" rx="1"/>
-    <rect x="5" y="21" width="6" height="6" rx="1"/>
-    <rect x="13" y="13" width="3" height="3"/>
-    <rect x="18" y="13" width="3" height="3"/>
-    <rect x="13" y="18" width="3" height="3"/>
-    <rect x="18" y="18" width="3" height="3"/>
-    <rect x="22" y="22" width="3" height="3"/>
-  </g>
+  <rect width="32" height="32" rx="3" fill="#0a0a0a"/>
+  <!-- QR finder block (the "q" in the wordmark) -->
+  <rect x="4" y="4" width="24" height="24" rx="1" fill="#1aa05a"/>
+  <rect x="7" y="7" width="18" height="18" rx="0" fill="#0a0a0a"/>
+  <rect x="10" y="10" width="12" height="12" rx="0" fill="#1aa05a"/>
+  <!-- center dot -->
+  <rect x="13" y="13" width="6" height="6" fill="#0a0a0a"/>
 </svg>
