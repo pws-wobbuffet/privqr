@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 72" width="320" height="72" role="img" aria-label="privqr">
+  <!-- dark pill background -->
+  <rect width="320" height="72" rx="8" fill="#0a0a0a"/>
+
+  <!-- "priv" text approximated with bold system font -->
+  <text x="20" y="52"
+        font-family="'Archivo Black','Arial Black',Impact,sans-serif"
+        font-weight="900"
+        font-size="48"
+        letter-spacing="-2"
+        fill="#f3efe6">priv</text>
+
+  <!-- QR finder block replacing "q" — 3×3 grid, all cells filled except centre -->
+  <g transform="translate(175, 10)">
+    <!-- green outer square -->
+    <rect x="0" y="0" width="52" height="52" rx="2" fill="#1aa05a"/>
+    <!-- dark ring (8px inset) -->
+    <rect x="8" y="8" width="36" height="36" fill="#0a0a0a"/>
+    <!-- green inner square -->
+    <rect x="14" y="14" width="24" height="24" fill="#1aa05a"/>
+    <!-- dark centre dot -->
+    <rect x="20" y="20" width="12" height="12" fill="#0a0a0a"/>
+  </g>
+
+  <!-- "r" text -->
+  <text x="235" y="52"
+        font-family="'Archivo Black','Arial Black',Impact,sans-serif"
+        font-weight="900"
+        font-size="48"
+        letter-spacing="-2"
+        fill="#f3efe6">r</text>
+</svg>

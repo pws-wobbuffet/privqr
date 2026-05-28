@@ -1,4 +1,4 @@
-# privqr
+<img src="https://raw.githubusercontent.com/pws-wobbuffet/privqr/main/public/logo.svg" alt="privqr" height="72" />
 
 **A QR code generator that never sees your data.**
 
@@ -11,7 +11,7 @@ Most QR generators send your URLs, WiFi passwords, and contact info through thei
 - Generate QR codes for **URL/text, WiFi credentials, vCard, geographic locations, email, SMS, and phone numbers**
 - Customize **colors, dot/corner styles, and embed a logo** in the center
 - Download as **PNG** or **SVG** (vector)
-- Available in **English, Spanish, Portuguese, and French**
+- Available in **English, Spanish, Portuguese, and French** — auto-detected from your browser
 - 100% client-side: open the page, disconnect from the internet, it still works
 
 ## Why
@@ -20,24 +20,21 @@ Your WiFi password is yours. So is the URL of that draft Google Doc you're shari
 
 ## Run locally
 
-It's a static site. Any HTTP server works:
-
 ```bash
 git clone https://github.com/pws-wobbuffet/privqr.git
-cd privqr/docs
-python3 -m http.server 8080
-# open http://localhost:8080
+cd privqr
+pnpm install
+pnpm dev
+# open http://localhost:4321/privqr/
 ```
-
-Or just publish the `docs/` folder to any static host. There's no build step.
 
 ## Stack
 
-- Vanilla HTML / CSS / JavaScript (ES modules)
-- [`qr-code-styling`](https://github.com/kozakdenys/qr-code-styling) loaded from a CDN for QR rendering + logo embedding + PNG/SVG export
-- Hosted on GitHub Pages from `/docs`
+- [Astro](https://astro.build) + [React](https://react.dev) — build-time bundling, no runtime transpiler
+- [`qr-code-styling`](https://github.com/kozakdenys/qr-code-styling) for QR rendering, logo embedding, and PNG/SVG export
+- Deployed to GitHub Pages via GitHub Actions
 
-No dependencies to install. No tracking. No analytics.
+No tracking. No analytics. No backend.
 
 ## Contributing
 
