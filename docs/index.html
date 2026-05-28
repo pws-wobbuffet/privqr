@@ -196,7 +196,13 @@
     gap: 28px;
     align-items: start;
   }
-  @media (max-width: 960px) { .grid { grid-template-columns: 1fr; } }
+  @media (max-width: 960px) {
+    .grid { grid-template-columns: 1fr; }
+    /* Move the preview column (last child) to the top on mobile */
+    .grid > div:last-child { order: -1; }
+    /* Sticky is meaningless in single-column; let it scroll naturally */
+    .preview-card { position: static; }
+  }
 
   .card {
     background: var(--paper);
@@ -461,9 +467,16 @@
   .preview-qr {
     width: 100%;
     aspect-ratio: 1;
+    position: relative;
     overflow: hidden;
   }
-  .preview-qr canvas, .preview-qr svg { display: block; width: 100% !important; height: 100% !important; }
+  .preview-qr canvas, .preview-qr svg {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 100% !important;
+    height: 100% !important;
+  }
 
   .preview-header {
     display: flex;
