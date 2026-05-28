@@ -145,6 +145,8 @@ export default function App() {
   useEffect(() => {
     if (theme === 'dark' && !flippedRef.current && fg === '#0a0a0a' && bg === '#ffffff') {
       setFg('#f3efe6'); setBg('#14181f'); flippedRef.current = true;
+    } else if (theme === 'light' && flippedRef.current && fg === '#f3efe6' && bg === '#14181f') {
+      setFg('#0a0a0a'); setBg('#ffffff'); flippedRef.current = false;
     }
   }, [theme]);
 
