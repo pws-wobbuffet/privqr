@@ -1,0 +1,263 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Privacy-first QR code generator. 100% in your browser. No server, no account, nothing uploaded."
+    />
+    <meta name="theme-color" content="#0b0d12" />
+    <title>privqr — QR codes that never leave your browser</title>
+    <link rel="icon" href="favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-name">privqr</span>
+        <span class="brand-tag" data-i18n="brand.tag">QR codes that never leave your browser</span>
+      </div>
+      <nav class="topbar-nav">
+        <label class="lang-select">
+          <span class="visually-hidden" data-i18n="lang.label">Language</span>
+          <select id="lang" aria-label="Language">
+            <option value="en">English</option>
+            <option value="es">Español</option>
+            <option value="pt">Português</option>
+            <option value="fr">Français</option>
+          </select>
+        </label>
+        <a
+          class="gh-link"
+          href="https://github.com/pws-wobbuffet/privqr"
+          rel="noopener noreferrer"
+          target="_blank"
+          aria-label="GitHub"
+        >
+          GitHub
+        </a>
+      </nav>
+    </header>
+
+    <main class="layout">
+      <section class="panel content-panel">
+        <h2 data-i18n="content.title">What do you want to encode?</h2>
+        <div class="tabs" role="tablist" id="tabs">
+          <button class="tab active" role="tab" data-tab="url" data-i18n="tab.url">URL / Text</button>
+          <button class="tab" role="tab" data-tab="wifi" data-i18n="tab.wifi">WiFi</button>
+          <button class="tab" role="tab" data-tab="vcard" data-i18n="tab.vcard">Contact</button>
+          <button class="tab" role="tab" data-tab="geo" data-i18n="tab.geo">Location</button>
+          <button class="tab" role="tab" data-tab="email" data-i18n="tab.email">Email</button>
+          <button class="tab" role="tab" data-tab="sms" data-i18n="tab.sms">SMS</button>
+          <button class="tab" role="tab" data-tab="phone" data-i18n="tab.phone">Phone</button>
+        </div>
+
+        <div class="forms">
+          <form class="form active" data-form="url" autocomplete="off">
+            <label>
+              <span data-i18n="form.url.value">URL or text</span>
+              <input type="text" name="value" placeholder="https://example.com" />
+            </label>
+          </form>
+
+          <form class="form" data-form="wifi" autocomplete="off">
+            <label>
+              <span data-i18n="form.wifi.ssid">Network name (SSID)</span>
+              <input type="text" name="ssid" />
+            </label>
+            <label>
+              <span data-i18n="form.wifi.password">Password</span>
+              <input type="text" name="password" />
+            </label>
+            <label>
+              <span data-i18n="form.wifi.encryption">Encryption</span>
+              <select name="encryption">
+                <option value="WPA">WPA / WPA2 / WPA3</option>
+                <option value="WEP">WEP</option>
+                <option value="nopass" data-i18n="form.wifi.nopass">None (open)</option>
+              </select>
+            </label>
+            <label class="checkbox">
+              <input type="checkbox" name="hidden" />
+              <span data-i18n="form.wifi.hidden">Hidden network</span>
+            </label>
+          </form>
+
+          <form class="form" data-form="vcard" autocomplete="off">
+            <div class="grid-2">
+              <label>
+                <span data-i18n="form.vcard.firstname">First name</span>
+                <input type="text" name="firstname" />
+              </label>
+              <label>
+                <span data-i18n="form.vcard.lastname">Last name</span>
+                <input type="text" name="lastname" />
+              </label>
+            </div>
+            <div class="grid-2">
+              <label>
+                <span data-i18n="form.vcard.org">Organization</span>
+                <input type="text" name="org" />
+              </label>
+              <label>
+                <span data-i18n="form.vcard.title">Job title</span>
+                <input type="text" name="title" />
+              </label>
+            </div>
+            <div class="grid-2">
+              <label>
+                <span data-i18n="form.vcard.phone">Phone</span>
+                <input type="tel" name="phone" />
+              </label>
+              <label>
+                <span data-i18n="form.vcard.email">Email</span>
+                <input type="email" name="email" />
+              </label>
+            </div>
+            <label>
+              <span data-i18n="form.vcard.url">Website</span>
+              <input type="url" name="url" placeholder="https://" />
+            </label>
+          </form>
+
+          <form class="form" data-form="geo" autocomplete="off">
+            <div class="grid-2">
+              <label>
+                <span data-i18n="form.geo.lat">Latitude</span>
+                <input type="number" name="lat" step="any" placeholder="40.4168" />
+              </label>
+              <label>
+                <span data-i18n="form.geo.lng">Longitude</span>
+                <input type="number" name="lng" step="any" placeholder="-3.7038" />
+              </label>
+            </div>
+            <p class="hint" data-i18n="form.geo.hint">
+              Tip: in Google Maps, right-click a point to copy the coordinates.
+            </p>
+          </form>
+
+          <form class="form" data-form="email" autocomplete="off">
+            <label>
+              <span data-i18n="form.email.to">Recipient</span>
+              <input type="email" name="to" placeholder="someone@example.com" />
+            </label>
+            <label>
+              <span data-i18n="form.email.subject">Subject</span>
+              <input type="text" name="subject" />
+            </label>
+            <label>
+              <span data-i18n="form.email.body">Body</span>
+              <textarea name="body" rows="3"></textarea>
+            </label>
+          </form>
+
+          <form class="form" data-form="sms" autocomplete="off">
+            <label>
+              <span data-i18n="form.sms.number">Phone number</span>
+              <input type="tel" name="number" placeholder="+34 600 000 000" />
+            </label>
+            <label>
+              <span data-i18n="form.sms.body">Message</span>
+              <textarea name="body" rows="3"></textarea>
+            </label>
+          </form>
+
+          <form class="form" data-form="phone" autocomplete="off">
+            <label>
+              <span data-i18n="form.phone.number">Phone number</span>
+              <input type="tel" name="number" placeholder="+34 600 000 000" />
+            </label>
+          </form>
+        </div>
+      </section>
+
+      <section class="panel style-panel">
+        <h2 data-i18n="style.title">Make it yours</h2>
+
+        <div class="controls">
+          <div class="grid-2">
+            <label>
+              <span data-i18n="style.fg">Foreground</span>
+              <input type="color" id="fg" value="#0b0d12" />
+            </label>
+            <label>
+              <span data-i18n="style.bg">Background</span>
+              <input type="color" id="bg" value="#ffffff" />
+            </label>
+          </div>
+
+          <label>
+            <span data-i18n="style.dots">Dot style</span>
+            <select id="dotStyle">
+              <option value="square">Square</option>
+              <option value="dots">Dots</option>
+              <option value="rounded" selected>Rounded</option>
+              <option value="extra-rounded">Extra rounded</option>
+              <option value="classy">Classy</option>
+              <option value="classy-rounded">Classy rounded</option>
+            </select>
+          </label>
+
+          <label>
+            <span data-i18n="style.corners">Corner style</span>
+            <select id="cornerStyle">
+              <option value="square">Square</option>
+              <option value="dot">Dot</option>
+              <option value="extra-rounded" selected>Extra rounded</option>
+            </select>
+          </label>
+
+          <label>
+            <span data-i18n="style.ecl">Error correction</span>
+            <select id="ecl">
+              <option value="L">L (7%)</option>
+              <option value="M">M (15%)</option>
+              <option value="Q" selected>Q (25%)</option>
+              <option value="H">H (30%)</option>
+            </select>
+          </label>
+
+          <fieldset class="logo-field">
+            <legend data-i18n="style.logo">Logo (optional)</legend>
+            <div class="logo-row">
+              <input type="file" id="logo" accept="image/*" />
+              <button type="button" id="logoClear" class="ghost" data-i18n="style.logoClear">Clear</button>
+            </div>
+            <label class="slider">
+              <span><span data-i18n="style.logoSize">Logo size</span>: <output id="logoSizeOut">25%</output></span>
+              <input type="range" id="logoSize" min="10" max="40" value="25" />
+            </label>
+          </fieldset>
+        </div>
+      </section>
+
+      <section class="panel preview-panel">
+        <h2 data-i18n="preview.title">Preview</h2>
+        <div id="qr" class="qr-preview" aria-live="polite"></div>
+        <div class="downloads">
+          <button id="downloadPng" type="button" data-i18n="preview.downloadPng">Download PNG</button>
+          <button id="downloadSvg" type="button" class="ghost" data-i18n="preview.downloadSvg">Download SVG</button>
+        </div>
+        <p class="privacy-note" data-i18n="preview.privacy">
+          Everything happens on this page. Disconnect from the internet, and it still works.
+        </p>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p>
+        <span data-i18n="footer.made">Made by</span>
+        <a href="https://github.com/pws-wobbuffet" rel="noopener noreferrer" target="_blank">pws-wobbuffet</a>
+        ·
+        <a href="https://github.com/pws-wobbuffet/privqr" rel="noopener noreferrer" target="_blank">
+          <span data-i18n="footer.source">Source on GitHub</span>
+        </a>
+        · MIT
+      </p>
+    </footer>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
