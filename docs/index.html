@@ -460,12 +460,10 @@
   }
   .preview-qr {
     width: 100%;
-    max-width: 360px;
     aspect-ratio: 1;
-    display: grid;
-    place-items: center;
+    overflow: hidden;
   }
-  .preview-qr canvas, .preview-qr svg { width: 100% !important; height: auto !important; max-width: 100%; }
+  .preview-qr canvas, .preview-qr svg { display: block; width: 100% !important; height: 100% !important; }
 
   .preview-header {
     display: flex;
