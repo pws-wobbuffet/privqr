@@ -466,16 +466,12 @@
   }
   .preview-qr {
     width: 100%;
-    aspect-ratio: 1;
-    position: relative;
-    overflow: hidden;
+    aspect-ratio: 1; /* fallback while QR loads */
   }
-  .preview-qr canvas, .preview-qr svg {
-    position: absolute;
-    inset: 0;
+  .preview-qr svg {
     display: block;
     width: 100% !important;
-    height: 100% !important;
+    height: auto !important; /* works once viewBox is injected */
   }
 
   .preview-header {
@@ -1277,6 +1273,27 @@ function App() {
   useEffect(() => {
     if (qrInstance.current) qrInstance.current.update(qrOptions);
   }, [qrOptions]);
+
+  // qr-code-styling emits SVG without a viewBox, so CSS scaling treats
+  // the SVG as a fixed 720x720 viewport and clips content. Inject viewBox
+  // on every render so height:auto correctly preserves the 1:1 ratio.
+  useEffect(() => {
+    const container = qrContainer.current;
+    if (!container) return;
+    const patch = () => {
+      const svg = container.querySelector('svg');
+      if (!svg || svg.getAttribute('viewBox')) return;
+      const w = svg.getAttribute('width') || '720';
+      const h = svg.getAttribute('height') || '720';
+      svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+      svg.removeAttribute('width');
+      svg.removeAttribute('height');
+    };
+    const obs = new MutationObserver(patch);
+    obs.observe(container, { childList: true, subtree: true });
+    patch();
+    return () => obs.disconnect();
+  }, []);
 
   const download = (ext) => {
     if (!qrInstance.current) return;
